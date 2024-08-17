@@ -1,16 +1,17 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import styles from './app.module.css';
-
 import NxWelcome from './nx-welcome';
+import { Lib1 } from '@nx-playwright-demo/lib1';
 
 import { Route, Routes, Link } from 'react-router-dom';
 
-import { Lib1 } from '@nx-playwright-demo/lib1';
+import { Lib2 } from '@nx-playwright-demo/lib2';
 
 export function App() {
   return (
     <div>
-      <NxWelcome title="app1" />
+      <NxWelcome title="app2" />
+      <br />
+      <hr />
+      <br />
 
       {/* START: routes */}
       {/* These routes and navigation have been generated for you */}
@@ -27,6 +28,9 @@ export function App() {
             <Link to="/lib1">Lib1</Link>
           </li>
           <li>
+            <Link to="/lib2">Lib2</Link>
+          </li>
+          <li>
             <Link to="/page-2">Page 2</Link>
           </li>
         </ul>
@@ -41,7 +45,7 @@ export function App() {
             </div>
           }
         />
-        <Route path="/lib1" element={<Lib1 />} />
+        <Route path="/lib2" element={<Lib2 />} />
         <Route
           path="/page-2"
           element={

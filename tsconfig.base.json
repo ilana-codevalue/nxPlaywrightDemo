@@ -14,7 +14,10 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@nx-playwright-demo/lib1": ["libs/lib1/src/index.ts"],
+      "@nx-playwright-demo/lib2": ["libs/lib2/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
