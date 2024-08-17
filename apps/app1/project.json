@@ -1,0 +1,9 @@
+{
+  "name": "app1",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/app1/src",
+  "projectType": "application",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project app1 --web",
+  "targets": {}
+}
