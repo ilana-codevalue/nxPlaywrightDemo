@@ -24,8 +24,8 @@ jobs:
             cache: 'npm'
   
       - run: npm install --frozen-lockfile
-      - uses: nrwl/nx-set-shas@v4
-      
+      #- uses: nrwl/nx-set-shas@v4
+
       - run: npx nx run-many -t e2e -p app1-e2e app2-e2e
 
 
