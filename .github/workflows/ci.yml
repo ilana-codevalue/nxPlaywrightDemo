@@ -34,7 +34,8 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Playwright tests
-        run: npx playwright test
+        # run: npx playwright test
+        run: npx nx run-many -t e2e -p app1-e2e app2-e2e
 
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
