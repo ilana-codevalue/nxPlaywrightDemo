@@ -8,7 +8,8 @@
     "run-e2e-tests": "nx run-many -t e2e --projects=*-e2e --parallel=true",
     "run-e2e-tests-no-nx": "npx playwright test apps/app1-e2e apps/app2-e2e",
     "preview-app1": "npx nx run app1:preview",
-    "preview-app2": "npx nx run app2:preview"
+    "preview-app2": "npx nx run app2:preview",
+    "preview-all": "npx nx run-many --target=preview --projects=app1,app2 --parallel=true"
   },
   "private": true,
   "dependencies": {

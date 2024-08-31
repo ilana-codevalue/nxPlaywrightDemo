@@ -10,8 +10,8 @@ test('has title', async ({ page }) => {
   expect(await page.locator('h1').innerText()).toContain('Welcome');
 });
 
-test('has Lib1', async ({ page }) => {
+test('Lib1 visible', async ({ page }) => {
 
   // Expect Lib1 to contain a substring.
-  expect(await page.locator('#root > div > div:nth-child(6) > ul > li:nth-child(2) > a').innerText()).toContain('Lib1');
+  expect(await page.getByRole("link", { name: 'Lib1' }).isVisible()).toBe(true)
 });

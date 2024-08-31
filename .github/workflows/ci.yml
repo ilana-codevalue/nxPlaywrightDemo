@@ -30,7 +30,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Preview all apps
-        run: npm run preview-app1 && npm run preview-app2  
+        run: npm run preview-all  
 
       - name: Run Playwright tests
         run: npm run run-e2e-tests-no-nx --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
