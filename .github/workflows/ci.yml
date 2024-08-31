@@ -29,12 +29,12 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      - name: Run Playwright tests
-        run: npm run run-e2e-tests --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
-        
-      #   run: npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
-  
+      - name: Preview all apps
+        run: npm run preview-app1 && npm run preview-app2  
 
+      - name: Run Playwright tests
+        run: npm run run-e2e-tests-no-nx --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+        
       # - uses: actions/upload-artifact@v4
       #   if: ${{ !cancelled() }}
       #   with:

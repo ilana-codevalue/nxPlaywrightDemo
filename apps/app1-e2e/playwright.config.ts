@@ -24,12 +24,13 @@ export default defineConfig({
     trace: 'on-first-retry',
   },
   /* Run your local dev server before starting the tests */
-  webServer: {
-    command: 'npx nx run app1:preview',
-    url: 'http://localhost:4300',
-    reuseExistingServer: !process.env.CI,
-    cwd: workspaceRoot,
-  },
+  // webServer: {
+  //   // command: 'npx nx run app1:preview',
+  //   command: 'npx run preview',
+  //   url: 'http://localhost:4300',
+  //   reuseExistingServer: !process.env.CI,
+  //   cwd: workspaceRoot,
+  // },
   projects: [
     {
       name: 'chromium',
