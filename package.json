@@ -2,7 +2,11 @@
   "name": "@nx-playwright-demo/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "build-all-apps": "nx run-many -t build -p app1 app2 --parallel=true --skipNxCache=true",
+    "lint-tests": "nx run-many -t lint --projects=*-e2e --parallel=true",
+    "run-e2e-tests": "nx run-many -t e2e --projects=*-e2e --parallel=true"
+  },
   "private": true,
   "dependencies": {
     "react": "18.3.1",

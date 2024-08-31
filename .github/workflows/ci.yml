@@ -4,45 +4,41 @@ on:
   push:
     branches:
       - master
-  pull_request:
 
 permissions:
   actions: read
   contents: read
 
 jobs:
-  main:
+  test:
     runs-on: ubuntu-latest
+    strategy:
+     matrix:
+        shardIndex: [1]
+        shardTotal: [1]
+
     steps:
-
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          fetch-depth: 0
+          node-version: 20
 
-      - uses: actions/setup-node@v3
-        with:
-            node-version: 20
-            cache: 'npm'
-      
-      # - name: Start CI run
-      #   run: 'npx nx-cloud start-ci-run --distribute-on="8 linux-medium-js"'
-      # - run: npx nx run-many -t e2e -p app1-e2e app2-e2e
-
-      - run: npm install --frozen-lockfile
+      - name: Install dependencies
+        run: npm install --frozen-lockfile
 
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      - name: Run Playwright tests
-        # run: npx playwright test
-        run: npx nx run-many -t e2e -p app1-e2e app2-e2e
+      # - name: Run Playwright tests
+      #   run: npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+  
 
-      - uses: actions/upload-artifact@v4
-        if: ${{ !cancelled() }}
-        with:
-            name: playwright-report
-            path: playwright-report/
-            retention-days: 1     
+      # - uses: actions/upload-artifact@v4
+      #   if: ${{ !cancelled() }}
+      #   with:
+      #       name: playwright-report
+      #       path: playwright-report/
+      #       retention-days: 1     
       
       #- uses: nrwl/nx-set-shas@v4
 
