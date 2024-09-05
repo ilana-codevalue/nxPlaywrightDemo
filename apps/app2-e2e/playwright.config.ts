@@ -24,12 +24,11 @@ export default defineConfig({
     trace: 'on-first-retry',
   },
   /* Run your local dev server before starting the tests */
-  // webServer: {
-  //   // command: 'npx nx run app2:preview',
-  //   command: 'npm run preview-app1',
-  //   url: 'http://localhost:4301',
-  //   reuseExistingServer: !process.env.CI,
-  // },
+  webServer: {
+    command: 'npm run serve-app2',
+    url: 'http://localhost:4301',
+    timeout: 120000,
+  },
   projects: [
     {
       name: 'chromium',

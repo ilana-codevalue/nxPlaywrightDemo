@@ -8,12 +8,12 @@ export default defineConfig({
   cacheDir: '../../node_modules/.vite/apps/app2',
 
   server: {
-    port: 4200,
+    port: 4301,
     host: 'localhost',
   },
 
   preview: {
-    port: 4301,
+    port: 4200,
     host: 'localhost',
   },
 

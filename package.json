@@ -9,6 +9,9 @@
     "run-e2e-tests-no-nx": "npx playwright test apps/app1-e2e apps/app2-e2e",
     "preview-app1": "npx nx run app1:preview",
     "preview-app2": "npx nx run app2:preview",
+    "serve-app1": "npx vite dev --port 4300 &",
+    "serve-app2": "npx vite dev --port 4301 &",
+    "serve-all-no-nx": "npm run serve-app1 && npm run serve-app2",
     "preview-all": "npx nx run-many --target=preview --projects=app1,app2 --parallel=true &",
     "serve-all": "npx nx run-many --target=serve --projects=app1,app2 --parallel=true &",
     "build-all": "npx nx run-many --target=build --projects=app1,app2 --parallel=true &"
