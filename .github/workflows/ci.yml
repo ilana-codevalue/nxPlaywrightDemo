@@ -32,6 +32,12 @@ jobs:
       - name: Preview all apps
         run: npm run preview-all
 
+      - name: Wait for app1 to be Ready
+        run: npx wait-on tcp:4300
+
+      - name: Wait for app2 to be Ready
+        run: npx wait-on tcp:4301
+
       - name: Run Playwright tests
         run: npm run run-e2e-tests-no-nx --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
         
