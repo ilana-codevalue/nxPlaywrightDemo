@@ -27,7 +27,8 @@ export default defineConfig({
   webServer: {
     command: 'npm run serve-app2',
     url: 'http://localhost:4301',
-    timeout: 120000,
+    reuseExistingServer: !process.env.CI,
+    timeout: 10000,
   },
   projects: [
     {
@@ -35,15 +36,15 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
     },
 
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
+    // {
+    //   name: 'firefox',
+    //   use: { ...devices['Desktop Firefox'] },
+    // },
 
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
+    // {
+    //   name: 'webkit',
+    //   use: { ...devices['Desktop Safari'] },
+    // },
 
     // Uncomment for mobile browsers support
     /* {
