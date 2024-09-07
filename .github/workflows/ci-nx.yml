@@ -1,4 +1,4 @@
-name: CI-nx
+name: ci-nx
 
 on:
   push:
