@@ -19,18 +19,14 @@ jobs:
           node-version: 20
           cache: 'npm'
 
-      - run: npm ci
+      - run: npx nx-cloud start-ci-run 
+     
+      - run: npm ci --frozen-lockfile
 
-      # - uses: nrwl/nx-set-shas@v4
+      - uses: nrwl/nx-set-shas@v4
 
-      - run: npm run run-e2e-tests
-
-      # Prepend any command with "nx-cloud record --" to record its logs to Nx Cloud
-      # - run: npx nx-cloud record -- nx format:check
-
-      # Nx Affected runs only tasks affected by the changes in this commit. Learn more: https://nx.dev/ci/features/affected
-      # - run: npx nx affected -t lint test build e2e-ci
-
+       # Nx Affected runs only tasks affected by the changes in this PR/commit. Learn more: https://nx.dev/ci/features/affected
+      - run: npx nx affected -t e2e
 
 
         
