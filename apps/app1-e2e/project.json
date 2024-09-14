@@ -6,9 +6,5 @@
   "implicitDependencies": ["app1"],
   "// targets": "to see all targets run: nx show project app1-e2e --web",
   "targets": {
-    "e2e": {
-      "cache": false,
-      "executor": "@nx/playwright:playwright"
-    }
   }
 }

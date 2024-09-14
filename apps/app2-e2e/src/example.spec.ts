@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import { link } from 'fs';
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('http://localhost:4301');
+  await page.goto('/');
 });
 
 test('has title', async ({ page }) => {
