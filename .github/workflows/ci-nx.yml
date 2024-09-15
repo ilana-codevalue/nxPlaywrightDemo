@@ -19,14 +19,14 @@ jobs:
           node-version: 20
           cache: 'npm'
 
-      - run: npx nx-cloud start-ci-run 
+      # - run: npx nx-cloud start-ci-run 
      
       - run: npm ci --frozen-lockfile
 
-      - uses: nrwl/nx-set-shas@v4
+      # - uses: nrwl/nx-set-shas@v4
 
        # Nx Affected runs only tasks affected by the changes in this PR/commit. Learn more: https://nx.dev/ci/features/affected
-      - run: npx nx run app1-e2e:e2e-ci
+      - run: npm run e2e
 
 
         
