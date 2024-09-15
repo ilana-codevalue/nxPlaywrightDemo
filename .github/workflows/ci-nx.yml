@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  test:
+  main:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,10 +22,10 @@ jobs:
           --distribute-on="3 linux-medium-js" \
           --stop-agents-after="e2e-ci"
      
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'pnpm'
+          cache: 'npm'
       
       - run: npm ci --frozen-lockfile
 
