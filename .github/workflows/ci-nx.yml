@@ -19,14 +19,17 @@ jobs:
           node-version: 20
           cache: 'npm'
 
-      # - run: npx nx-cloud start-ci-run 
+      - run: npx nx-cloud start-ci-run \
+          --distribute-on="3 linux-medium-js" \
+          --stop-agents-after="e2e-ci"
      
       - run: npm ci --frozen-lockfile
 
       # - uses: nrwl/nx-set-shas@v4
 
        # Nx Affected runs only tasks affected by the changes in this PR/commit. Learn more: https://nx.dev/ci/features/affected
-      - run: npm run e2e
+      - run: nx run-many -t e2e-ci --projects=*-e2e
+      
 
 
         
