@@ -83,7 +83,7 @@ jobs:
     name: Nx Cloud - Agents
     uses: nrwl/ci/.github/workflows/nx-cloud-agents.yml@v0.13.0
     with:
-      number-of-agents: 20
+      number-of-agents: 3
       install-commands: |
         pnpm install
         npx playwright install --with-deps

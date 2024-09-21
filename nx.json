@@ -13,7 +13,10 @@
       "!{projectRoot}/src/test-setup.[jt]s",
       "!{projectRoot}/test-setup.[jt]s"
     ],
-    "sharedGlobals": ["{workspaceRoot}/.github/workflows/ci-nx.yml"]
+    "sharedGlobals": [
+      "{workspaceRoot}/.github/workflows/ci-nx.yml",
+      "{workspaceRoot}/.github/workflows/ci-nx-affected.yml"
+    ]
   },
   "nxCloudAccessToken": "YjI2NzYxZTYtMjY2Zi00MjYyLWJhNzEtZTQ0YmQwYmExNjZjfHJlYWQtd3JpdGU=",
   "plugins": [
