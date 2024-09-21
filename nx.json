@@ -48,12 +48,6 @@
       "cache": true,
       "dependsOn": ["^build"],
       "inputs": ["production", "^production"]
-    },
-    "app1:preview": {
-      "cache": true
-    },
-    "app2:preview": {
-      "cache": true
     }
   },
   "generators": {
