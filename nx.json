@@ -49,7 +49,10 @@
       "dependsOn": ["^build"],
       "inputs": ["production", "^production"]
     },
-    "@nx/vite:preview": {
+    "app1:preview": {
+      "cache": true
+    },
+    "app2:preview": {
       "cache": true
     }
   },
