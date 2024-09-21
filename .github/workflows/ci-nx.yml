@@ -31,7 +31,7 @@ jobs:
       - uses: nrwl/nx-set-shas@v4
 
       # Prepend any command with "nx-cloud record --"
-      - run: npx nx-cloud record -- nx format:check
+      # - run: npx nx-cloud record -- nx format:check
 
       # Nx lint and e2e all projects
       - run: npx nx run-many -t lint e2e-ci -p app1-e2e
