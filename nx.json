@@ -48,6 +48,9 @@
       "cache": true,
       "dependsOn": ["^build"],
       "inputs": ["production", "^production"]
+    },
+    "@nx/vite:preview": {
+      "cache": true
     }
   },
   "generators": {
