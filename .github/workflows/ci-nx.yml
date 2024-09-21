@@ -63,7 +63,7 @@ name: ci-nx
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   main:
