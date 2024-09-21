@@ -21,10 +21,7 @@
       "plugin": "@nx/vite/plugin",
       "options": {
         "buildTargetName": "build",
-        "testTargetName": "test",
-        "serveTargetName": "serve",
-        "previewTargetName": "preview",
-        "serveStaticTargetName": "serve-static"
+        "previewTargetName": "preview"
       }
     },
     {
@@ -39,17 +36,14 @@
         "ciTargetName": "e2e-ci",
         "targetName": "e2e"
       }
-    },
-    {
-      "plugin": "@nx/jest/plugin",
-      "options": {
-        "targetName": "test"
-      }
     }
   ],
   "targetDefaults": {
     "e2e-ci--**/*": {
       "dependsOn": ["^build"]
+    },
+    "e2e-ci": {
+      "cache": true
     },
     "@nx/vite:build": {
       "cache": true,
