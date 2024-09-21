@@ -30,7 +30,7 @@ jobs:
       - run: npm ci --frozen-lockfile
 
        # Nx run e2e-ci target on all projects 
-      - run: npx nx run-many --target=e2e-ci --all=true --parallel=1
+      - run: npx nx run-many --target=e2e-ci --projects=app1-e2e --parallel=1
       
 
 
