@@ -27,10 +27,14 @@ jobs:
           node-version: 20
           cache: 'npm'
       
-      - run: npm ci --frozen-lockfile
+      - run: npm ci
+      - uses: nrwl/nx-set-shas@v4
 
-      # Nx lint all projects
-      - run: npx nx run-many --target=lint --all=true --parallel=3
+      # Prepend any command with "nx-cloud record --"
+      - run: npx nx-cloud record -- nx format:check
+
+      # Nx lint and e2e all projects
+      - run: npx nx run-many -t lint e2e-ci -p app1-e2e
 
        # Nx run e2e-ci target on all projects 
        # - run: npx nx run-many --target=e2e-ci --projects=app1-e2e --parallel=1
