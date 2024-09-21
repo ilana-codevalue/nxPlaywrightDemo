@@ -14,7 +14,6 @@
       "!{projectRoot}/test-setup.[jt]s"
     ],
     "sharedGlobals": [
-      "{workspaceRoot}/.github/workflows/ci-nx.yml",
       "{workspaceRoot}/.github/workflows/ci-nx-affected.yml"
     ]
   },
@@ -42,9 +41,6 @@
     }
   ],
   "targetDefaults": {
-    "e2e-ci--**/*": {
-      "dependsOn": ["^build"]
-    },
     "e2e-ci": {
       "cache": true
     },
