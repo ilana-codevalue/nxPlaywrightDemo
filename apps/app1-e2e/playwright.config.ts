@@ -18,7 +18,7 @@ export default defineConfig({
   webServer: {
     command: 'npm run preview-app1',
     url: baseURL,
-    reuseExistingServer: !process.env.CI,
+    reuseExistingServer: true
   },
 
   projects: [

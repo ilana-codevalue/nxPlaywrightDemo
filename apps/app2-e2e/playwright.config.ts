@@ -18,9 +18,9 @@ export default defineConfig({
   webServer: {
     command: 'npm run preview-app2',
     url: baseURL,
-    reuseExistingServer: !process.env.CI,
+    reuseExistingServer: true,
   },
-  
+
   projects: [
     {
       name: 'chromium',
