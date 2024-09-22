@@ -16,6 +16,9 @@ const baseURL = process.env['BASE_URL'] || 'http://localhost:4201';
 export default defineConfig({
   ...nxE2EPreset(__filename, { testDir: 'src' }),
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
+  
+  workers:  process.env.CI ? 1 : undefined,
+
   use: {
     baseURL,
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
