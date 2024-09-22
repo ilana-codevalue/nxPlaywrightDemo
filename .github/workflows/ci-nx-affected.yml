@@ -26,7 +26,7 @@ jobs:
       - run: npm ci
 
       - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
+        run: PLAYWRIGHT_BROWSERS_PATH=$HOME/pw-browsers npx playwright install --with-deps
 
       - uses: nrwl/nx-set-shas@v4
 
@@ -34,12 +34,12 @@ jobs:
         run: npm run preview-all
 
       - name: Run affected e2e tests
-        run: npx nx affected -t lint e2e --base=origin/master~1 --head=origin/master --parallel=3
+        run: PLAYWRIGHT_BROWSERS_PATH=$HOME/pw-browsers npx nx affected -t e2e --base=origin/master~1 --head=origin/master --parallel=3
 
-      # - uses: actions/upload-artifact@v4
-      #   if: ${{ !cancelled() }}
-      #   with:
-      #       name: playwright-report
-      #       path: playwright-report/
-      #       retention-days: 1     
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+            name: playwright-report
+            path: playwright-report/
+            retention-days: 1     
     
