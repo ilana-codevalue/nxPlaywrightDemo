@@ -23,13 +23,13 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
-      
       - run: npm ci
 
       - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
+        run: PLAYWRIGHT_BROWSERS_PATH=$HOME/pw-browsers npx playwright install --with-deps
 
       - uses: nrwl/nx-set-shas@v4
 
-      - run: NX_CLOUD_DISTRIBUTED_EXECUTION=false npx nx affected -t lint preview e2e
+      - name: Run e2e affected tests
+        run: npx nx affected -t lint --base=origin/master~1 --head=origin/master 
     
