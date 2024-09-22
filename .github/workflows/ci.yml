@@ -12,11 +12,6 @@ permissions:
 jobs:
   test:
     runs-on: ubuntu-latest
-    strategy:
-     matrix:
-        shardIndex: [1]
-        shardTotal: [1]
-
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -29,14 +24,11 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      - name: Serve app1
-        run: npm run serve-app1
-        
-      - name: Serve app2
-        run: npm run serve-app2
+      - name: Preview all apps
+        run: npm run preview-all
 
       - name: Run Playwright tests
-        run: npm run run-e2e-tests-no-nx 
+        run: npm run e2e-no-nx 
 
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
@@ -45,9 +37,3 @@ jobs:
             path: playwright-report/
             retention-days: 1     
       
-      #- uses: nrwl/nx-set-shas@v4
-
-      # Prepend any command with "nx-cloud record --" to record its logs to Nx Cloud
-      # - run: npx nx-cloud record -- echo Hello World
-      # Nx Affected runs only tasks affected by the changes in this PR/commit. Learn more: https://nx.dev/ci/features/affected
-      #- run: npx nx affected -t lint test build e2e-ci
