@@ -30,11 +30,9 @@ jobs:
 
       - uses: nrwl/nx-set-shas@v4
 
-      - run: git branch --track master origin/master
-
       # - name: Lint affected projects
       #   run: npx nx affected -t lint
 
       - name: Run affected e2e tests
-        run: npx nx affected -t e2e-ci
+        run: npx nx affected -t e2e-ci --base=origin/master~1 --head=origin/master --parallel=3
     
