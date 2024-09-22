@@ -26,16 +26,13 @@ jobs:
       - run: npm ci
 
       - name: Install Playwright Browsers
-        run: PLAYWRIGHT_BROWSERS_PATH=$HOME/pw-browsers npx playwright install --with-deps
+        run: npx playwright install --with-deps
 
       - uses: nrwl/nx-set-shas@v4
-
-      # - name: Lint affected projects
-      #   run: npx nx affected -t lint
 
       - name: Preview all apps
         run: npm run preview-all
 
       - name: Run affected e2e tests
-        run: npx nx affected -t e2e --base=origin/master~1 --head=origin/master --parallel=3
+        run: npx nx affected -t lint e2e --base=origin/master~1 --head=origin/master --parallel=3
     
