@@ -34,5 +34,5 @@ jobs:
       #   run: npx nx affected -t lint
 
       - name: Run affected e2e tests
-        run: npx nx affected -t e2e-ci --base=origin/master~1 --head=origin/master --parallel=3
+        run: npx nx affected -t e2e --base=origin/master~1 --head=origin/master --parallel=3
     
