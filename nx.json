@@ -45,6 +45,9 @@
     "e2e-ci": {
       "cache": true
     },
+    "e2e": {
+      "cache": true
+    },
     "@nx/vite:build": {
       "cache": true,
       "dependsOn": ["^build"],

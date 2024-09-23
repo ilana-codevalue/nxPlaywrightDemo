@@ -20,6 +20,7 @@
     "start-app1": "npx nx run-many -t build preview -p app1 &",
     "start-app2": "npx nx run-many -t build preview -p app2 &",
     "start": "npm run build-all && npm run preview-all",
+    "start-local": "npm run build-all-no-cache && npm run preview-all",
     
     "build-all-no-cache": "npx nx run-many -t build -p app1 app2 --parallel=true --skipNxCache=true &",
     "build-all": "npx nx run-many --target=build --projects=app1,app2 --parallel=true &"

@@ -17,7 +17,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      # Cache node_modules
       - uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -25,15 +24,13 @@ jobs:
       - run: npm ci
 
       - name: Install Playwright Browsers
-        run: PLAYWRIGHT_BROWSERS_PATH=$HOME/pw-browsers npx playwright install --with-deps
+        run: npx playwright install --with-deps
 
-      - uses: nrwl/nx-set-shas@v4
+      - name: Preview all apps
+        run: npm run start
 
-      # - name: Preview all apps
-      #   run: npm run start
-
-      - name: Run affected e2e tests
-        run: PLAYWRIGHT_BROWSERS_PATH=$HOME/pw-browsers npm run e2e-nx --base=origin/master~1 --head=origin/master --parallel=2
+      - name: Run e2e tests
+        run: npm run e2e-nx
 
       - name: Upload blob report to GitHub Actions Artifacts
         if: ${{ !cancelled() }}
