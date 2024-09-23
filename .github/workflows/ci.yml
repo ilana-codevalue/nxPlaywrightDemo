@@ -34,7 +34,7 @@ jobs:
         run: npm run preview-all
 
       - name: Run Playwright tests
-        run: npm run e2e-no-nx --reporter=blob --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+        run: npm run e2e --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
 
       - name: Upload blob report to GitHub Actions Artifacts
         if: ${{ !cancelled() }}
