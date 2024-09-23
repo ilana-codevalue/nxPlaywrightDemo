@@ -8,6 +8,8 @@ export default defineConfig({
   ...nxE2EPreset(__filename, { testDir: 'src' }),
   
   workers:  process.env.CI ? 1 : undefined,
+
+  reporter: process.env.CI ? 'dot' : 'list',
   
   use: {
     baseURL: _baseURL,
