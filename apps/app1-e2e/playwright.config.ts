@@ -21,7 +21,7 @@ export default defineConfig({
 
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: 'npm run preview-app1',
+    command: 'npm run start',
     url: _baseURL,
     reuseExistingServer: true,
   },
