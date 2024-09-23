@@ -30,10 +30,10 @@ jobs:
       - uses: nrwl/nx-set-shas@v4
 
       - name: Preview all apps
-        run: npm run preview-all
+        run: npm run start
 
       - name: Run affected e2e tests
-        run: PLAYWRIGHT_BROWSERS_PATH=$HOME/pw-browsers npx nx affected -t e2e --base=origin/master~1 --head=origin/master --parallel=3
+        run: PLAYWRIGHT_BROWSERS_PATH=$HOME/pw-browsers npx nx affected -t e2e --base=origin/master~1 --head=origin/master --parallel=2
 
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
