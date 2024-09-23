@@ -15,8 +15,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        shardIndex: [1, 2, 3, 4]
-        shardTotal: [4]
+        shardIndex: [1, 2]
+        shardTotal: [2]
 
     steps:
       - uses: actions/checkout@v4
@@ -30,8 +30,8 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      - name: Preview all apps
-        run: npm run preview-all
+      # - name: Preview all apps
+      #   run: npm run preview-all
 
       - name: Run Playwright tests
         run: npm run e2e --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
