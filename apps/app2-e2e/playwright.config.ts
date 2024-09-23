@@ -7,6 +7,9 @@ const _baseURL = 'http://localhost:4201';
 export default defineConfig({
   ...nxE2EPreset(__filename, { testDir: 'src' }),
   
+   /* Retry on CI only */
+  retries: process.env.CI ? 2 : 0,
+
   workers:  process.env.CI ? 2 : undefined,
 
   reporter: process.env.CI ? [['blob', { outputFolder: 'blob-report' }]]: 'html',

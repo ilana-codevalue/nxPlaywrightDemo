@@ -7,6 +7,9 @@ const _baseURL = 'http://localhost:4200';
 export default defineConfig({
   ...nxE2EPreset(__filename, { testDir: 'src' }),
   
+   /* Retry on CI only */
+  retries: process.env.CI ? 2 : 0,
+
   workers:  process.env.CI ? 2 : undefined,
 
   reporter: process.env.CI ? [['blob', { outputFolder: 'blob-report' }]]: 'html',
@@ -18,7 +21,7 @@ export default defineConfig({
 
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: 'npm run preview-app2',
+    command: 'npm run preview-app1',
     url: _baseURL,
     reuseExistingServer: true,
   },
