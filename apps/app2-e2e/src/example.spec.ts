@@ -2,11 +2,12 @@ import { test, expect } from '@playwright/test';
 
 test.describe.configure({ mode: 'parallel' });
 
-test.beforeEach('', async ({ page }) => {
-  await page.goto('http://localhost:4201');
-});
-
 test.describe('app2 tests', () => {
+  
+  test.beforeEach('', async ({ page }) => {
+    await page.goto('http://localhost:4201');
+  });
+
   test('has title', async ({ page }) => {
     // Expect h1 to contain a substring.
     expect(await page.locator('h1').innerText()).toContain('Welcome');
