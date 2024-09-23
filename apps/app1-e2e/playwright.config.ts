@@ -10,7 +10,7 @@ export default defineConfig({
   workers:  process.env.CI ? 2 : undefined,
 
   reporter: process.env.CI ? [['blob', { outputFolder: 'blob-report' }]]: 'html',
-  
+
   use: {
     baseURL: _baseURL,
     trace: 'on-first-retry',
@@ -18,9 +18,9 @@ export default defineConfig({
 
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: 'npm run preview-app1',
+    command: 'npm run preview-app2',
     url: _baseURL,
-    reuseExistingServer: true
+    reuseExistingServer: true,
   },
 
   projects: [
