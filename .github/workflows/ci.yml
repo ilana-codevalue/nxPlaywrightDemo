@@ -14,9 +14,9 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-      matrix:
-        shardIndex: [1, 2]
-        shardTotal: [2]
+      # matrix:
+      #   shardIndex: [1, 2]
+      #   shardTotal: [2]
 
     steps:
       - uses: actions/checkout@v4
@@ -34,7 +34,7 @@ jobs:
         run: npm run start
 
       - name: Run Playwright tests
-        run: npm run e2e --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+        run: npm run e2e
 
       - name: Upload blob report to GitHub Actions Artifacts
         if: ${{ !cancelled() }}
@@ -63,7 +63,7 @@ jobs:
       uses: actions/download-artifact@v4
       with:
         path: all-blob-reports
-        pattern: blob-report-*
+        pattern: blob-report*
         merge-multiple: true
 
     - name: Merge into HTML Report
