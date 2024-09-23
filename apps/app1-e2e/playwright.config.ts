@@ -9,7 +9,7 @@ export default defineConfig({
   
   workers:  process.env.CI ? 1 : undefined,
 
-  reporter: process.env.CI ? 'dot' : 'list',
+  reporter: process.env.CI ? 'blob' : 'html',
   
   use: {
     baseURL: _baseURL,
