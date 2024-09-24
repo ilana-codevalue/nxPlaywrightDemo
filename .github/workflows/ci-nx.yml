@@ -21,22 +21,19 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
-      - run: npm ci
+      - run: npm ci --silent
 
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      - name: Preview all apps
-        run: npm run start
-
-      - name: Run e2e tests
+      - name: Run e2e-nx tests
         run: npm run e2e-nx
 
       - name: Upload blob report to GitHub Actions Artifacts
         if: ${{ !cancelled() }}
         uses: actions/upload-artifact@v4
         with:
-          name: blob-report*
+          name: blob-report
           path: blob-report
           retention-days: 1
 
@@ -52,7 +49,7 @@ jobs:
         with:
           node-version: 18
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --silent
 
       - name: Download blob reports from GitHub Actions Artifacts
         uses: actions/download-artifact@v4

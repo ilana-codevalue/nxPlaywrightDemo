@@ -4,24 +4,19 @@
   "license": "MIT",
   "scripts": {
     "lint-tests": "nx run-many -t lint --projects=*-e2e --parallel=true",
-    
     "e2e-nx-affected": "nx affected -t e2e --parallel=true",
-    "e2e-nx": "npx nx run-many -t e2e --projects=*-e2e --parallel=true --reporter=blob",
+    "e2e-nx": "npx nx run-many -t e2e --projects=*-e2e --parallel=true --reporter=blob --skipNxCache=true",
     "e2e": "npx playwright test apps/app1-e2e apps/app2-e2e --reporter=blob",
-    
     "preview-app1": "npx nx run app1:preview &",
     "preview-app2": "npx nx run app2:preview &",
     "preview-all": "npx nx run-many --target=preview --projects=app1,app2 --parallel=true &",
-
     "serve-app1": "npx vite dev --port 4200 &",
     "serve-app2": "npx vite dev --port 4201 &",
     "serve-all": "npm run serve-app1 && npm run serve-app2",
-
     "start-app1": "npx nx run-many -t build preview -p app1 &",
     "start-app2": "npx nx run-many -t build preview -p app2 &",
     "start": "npm run build-all && npm run preview-all",
     "start-local": "npm run build-all-no-cache && npm run preview-all",
-    
     "build-all-no-cache": "npx nx run-many -t build -p app1 app2 --parallel=true --skipNxCache=true &",
     "build-all": "npx nx run-many --target=build --projects=app1,app2 --parallel=true &"
   },
