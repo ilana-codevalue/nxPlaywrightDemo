@@ -1,6 +1,7 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "defaultBase": "feature/ci-nx-affected",
+  "useDaemonProcess": true,
   "useInferencePlugins": true,
   "namedInputs": {
     "default": ["{projectRoot}/**/*", "sharedGlobals"],
