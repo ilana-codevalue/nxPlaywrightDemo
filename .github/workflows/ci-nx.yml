@@ -26,7 +26,7 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      - name: Run e2e-nx tests
+      - name: Run e2e tests
         run: npm run e2e-nx
 
       - name: Upload blob report to GitHub Actions Artifacts
