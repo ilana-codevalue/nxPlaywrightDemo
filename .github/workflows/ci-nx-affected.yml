@@ -3,7 +3,7 @@ name: ci-nx-affected
 on:
   push:
     branches:
-      - feature/ci-nx-affected
+      - master #feature/ci-nx-affected
 
 permissions:
   actions: read
@@ -11,6 +11,9 @@ permissions:
 
 jobs:
   test:
+    env:
+      BASE: 'origin/feature/ci-nx-affected^'
+      HEAD: 'origin/feature/ci-nx-affected'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -30,7 +33,7 @@ jobs:
         run: npx playwright install --with-deps chromium
 
       - name: Run affected e2e tests
-        run: npm run e2e-nx-affected --base=origin/feature/ci-nx-affected --head=HEAD --parallel=2
+        run: npm run e2e-nx-affected --base=${{env.BASE}} --head=${{env.HEAD}} --parallel=2
 
       - name: Upload blob report to GitHub Actions Artifacts
         if: ${{ !cancelled() }}
