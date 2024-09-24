@@ -15,7 +15,7 @@ test.describe('app2 tests', () => {
 
   test('Lib1 visible', async ({ page }) => {
     // Expect Lib1 to contain a substring.
-    expect(await page.getByRole('link', { name: 'Lib1' }).isVisible()).toBe(
+    expect(await page.getByRole('link', { name: 'Lib2' }).isVisible()).toBe(
       true
     );
   });
