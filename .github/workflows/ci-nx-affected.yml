@@ -22,7 +22,7 @@ jobs:
           node-version: 20
           cache: 'npm'
       
-      - run: git fetch origin master
+      - run: git fetch origin feature/ci-nx-affected
           
       - run: npm ci --silent
 
@@ -30,7 +30,7 @@ jobs:
         run: npx playwright install --with-deps chromium
 
       - name: Run affected e2e tests
-        run: npm run e2e-nx-affected --base=origin/feature/ci-nx-affected~1 --head=origin/feature/ci-nx-affected --parallel=2
+        run: npm run e2e-nx-affected --base=origin/feature/ci-nx-affected --head=HEAD --parallel=2
 
       - name: Upload blob report to GitHub Actions Artifacts
         if: ${{ !cancelled() }}
