@@ -25,7 +25,7 @@ export function App() {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/lib1">Lib1</Link>
+            <Link to="/lib1">Lib1-update</Link>
           </li>
           <li>
             <Link to="/lib2">Lib2</Link>
