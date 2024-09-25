@@ -3,7 +3,7 @@ import styles from './lib2.module.css';
 export function Lib2() {
   return (
     <div className={styles['container']}>
-      <h1>Welcome to Lib2! - update7</h1>
+      <h1>Welcome to Lib2! - update8</h1>
     </div>
   );
 }
