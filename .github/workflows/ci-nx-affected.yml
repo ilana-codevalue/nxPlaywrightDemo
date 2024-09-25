@@ -33,7 +33,7 @@ jobs:
         run: npx playwright install --with-deps chromium
 
       - name: Run affected e2e tests
-        run: npm run e2e-nx-affected --base=${{env.BASE}} --head=${{env.HEAD}} --parallel=2
+        run: npm run e2e-nx-affected -- --base=${{env.BASE}} --head=${{env.HEAD}} --parallel=2
 
       - name: Upload blob report to GitHub Actions Artifacts
         if: ${{ !cancelled() }}
