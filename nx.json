@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
-  "defaultBase": "origin/feature/ci-nx-affected",
+  "defaultBase": "HEAD~1",
   "useDaemonProcess": true,
   "useInferencePlugins": true,
   "namedInputs": {
