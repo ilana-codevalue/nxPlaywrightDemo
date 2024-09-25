@@ -3,7 +3,7 @@ name: ci-nx-affected
 on:
   push:
     branches:
-      - master #feature/ci-nx-affected - TODO
+      - feature/ci-nx-affected
 
 permissions:
   actions: read
