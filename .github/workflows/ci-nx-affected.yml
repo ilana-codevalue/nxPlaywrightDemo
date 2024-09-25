@@ -12,7 +12,7 @@ permissions:
 jobs:
   test:
     env:
-      BASE: 'origin/feature/ci-nx-affected^'
+      BASE: 'origin/feature/ci-nx-affected~1'
       HEAD: 'origin/feature/ci-nx-affected'
     runs-on: ubuntu-latest
     steps:
