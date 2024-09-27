@@ -1,5 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
 import { nxE2EPreset } from '@nx/playwright/preset';
+import { workspaceRoot } from '@nx/devkit';
 
 // For CI, you may want to set BASE_URL to the deployed application.
 const _baseURL = 'http://localhost:4201';
@@ -23,7 +24,8 @@ export default defineConfig({
   webServer: {
     command: 'npm run start',
     url: _baseURL,
-    reuseExistingServer: true,
+    reuseExistingServer: !env.CI,
+    cwd: workspaceRoot
   },
 
   projects: [
