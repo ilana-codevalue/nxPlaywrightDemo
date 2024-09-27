@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "e2e": "npx playwright test apps/app1-e2e apps/app2-e2e --reporter=blob",
+    "e2e": "npx playwright test apps/app1-e2e apps/app2-e2e --parallel=true --reporter=blob",
     "preview-app1": "npx nx run app1:preview &",
     "preview-app2": "npx nx run app2:preview &",
     "preview-all": "npx nx run-many --target=preview --projects=app1,app2 --parallel=true &",
