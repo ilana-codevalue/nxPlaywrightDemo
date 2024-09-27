@@ -10,7 +10,7 @@
     "start": "npm run build-all-no-cache && npm run preview-all",
     "build-all-no-cache": "npx nx run-many -t build -p app1 app2 --parallel=true --skipNxCache=true &",
     "build-all": "npx nx run-many --target=build --projects=app1,app2 --parallel=true &",
-    "lint-tests": "nx run-many -t lint --projects=*-e2e --parallel=true",
+    "lint-tests": "nx run-many -t lint --projects=*-e2e --parallel=true"
   },
   "private": true,
   "dependencies": {
