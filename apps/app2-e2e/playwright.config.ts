@@ -24,7 +24,7 @@ export default defineConfig({
   webServer: {
     command: 'npm run start',
     url: _baseURL,
-    reuseExistingServer: !env.CI,
+    reuseExistingServer: !process.env.CI,
     cwd: workspaceRoot
   },
 
