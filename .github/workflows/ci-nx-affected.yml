@@ -27,13 +27,34 @@ jobs:
       
       - run: git fetch origin feature/ci-nx-affected
           
-      - run: npm ci --silent
+      - name: Get installed Playwright version
+        id: playwright-version
+        run: echo "PLAYWRIGHT_VERSION=$(node -e "console.log(require('./package-lock.json').dependencies['@playwright/test'].version)")" >> $GITHUB_ENV
+
+      - name: Cache playwright binaries
+        uses: actions/cache@v4
+        id: playwright-cache
+        with:
+          path: |
+            ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}
+      
+      - name: Cache node_modules
+        uses: actions/cache@v4
+        id: node-modules-cache
+        with:
+            path: |
+              node_modules
+            key: modules-${{ hashFiles('package-lock.json') }}
+      - run: npm ci
+        if: steps.node-modules-cache.outputs.cache-hit != 'true'
 
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps chromium
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
 
       - name: Run affected e2e tests
-        run: npm run e2e-nx-affected -- --base=${{env.BASE}} --head=${{env.HEAD}} --parallel=2
+        run: npm run e2e-nx-affected -- --base=${{env.BASE}} --head=${{env.HEAD}}
 
       - name: Upload blob report to GitHub Actions Artifacts
         if: ${{ !cancelled() }}
