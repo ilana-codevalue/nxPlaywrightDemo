@@ -22,7 +22,7 @@ export default defineConfig({
 
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: 'npx nx preview app2',
+    command: 'npm run preview-app2',
     url: _baseURL,
     reuseExistingServer: !process.env.CI,
     cwd: workspaceRoot
