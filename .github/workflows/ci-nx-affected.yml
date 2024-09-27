@@ -27,9 +27,9 @@ jobs:
       
       - run: git fetch origin feature/ci-nx-affected
           
-      - name: Get installed Playwright version
-        id: playwright-version
-        run: echo "PLAYWRIGHT_VERSION=$(node -e "console.log(require('./package-lock.json').dependencies['@playwright/test'].version)")" >> $GITHUB_ENV
+      # - name: Get installed Playwright version
+      #   id: playwright-version
+      #   run: echo 'PLAYWRIGHT_VERSION=$(node -e "console.log(npx playwright --version").split(' ')[1])' >> $GITHUB_ENV  # run: echo "PLAYWRIGHT_VERSION=$(node -e "console.log(require('./package-lock.json').dependencies['@playwright/test'].version)")" >> $GITHUB_ENV
 
       - name: Cache playwright binaries
         uses: actions/cache@v4
@@ -37,7 +37,7 @@ jobs:
         with:
           path: |
             ~/.cache/ms-playwright
-          key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}
+          key: ${{ runner.os }}-playwright-${{ hashFiles('package-lock.json') }}
       
       - name: Cache node_modules
         uses: actions/cache@v4
@@ -46,6 +46,7 @@ jobs:
             path: |
               node_modules
             key: modules-${{ hashFiles('package-lock.json') }}
+            
       - run: npm ci
         if: steps.node-modules-cache.outputs.cache-hit != 'true'
 
