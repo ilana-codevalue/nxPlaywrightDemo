@@ -3,7 +3,7 @@ name: ci
 on:
   push:
     branches:
-      - feaure/ci
+      - feature/ci
 
 permissions:
   actions: read
