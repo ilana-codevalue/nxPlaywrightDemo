@@ -28,7 +28,7 @@ export function App() {
             <Link to="/lib1">Lib1</Link>
           </li>
           <li>
-            <Link to="/lib2">Lib2</Link>
+            <Link to="/lib2">Lib2-new</Link>
           </li>
           <li>
             <Link to="/page-2">Page 2</Link>
