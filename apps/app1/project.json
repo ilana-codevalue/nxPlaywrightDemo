@@ -12,7 +12,8 @@
       "defaultConfiguration": "development",
       "dependsOn": ["build"],
       "options": {
-        "buildTarget": "app1:build"
+        "buildTarget": "app1:build",
+        "buildLibsFromSource": true
       }
     }
   }
