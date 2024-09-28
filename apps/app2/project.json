@@ -6,15 +6,5 @@
   "tags": [],
   "// targets": "to see all targets run: nx show project app2 --web",
   "targets": {
-    "serve": {
-      "executor": "@nx/vite:dev-server",
-      "cache": true,
-      "defaultConfiguration": "development",
-      "dependsOn": ["build"],
-      "options": {
-        "buildTarget": "app2:build",
-        "buildLibsFromSource": true
-      }
-    }
   }
 }

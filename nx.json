@@ -52,12 +52,12 @@
     "@nx/vite:build": {
       "cache": true,
       "dependsOn": ["^build"],
-      "inputs": ["development", "^development"]
+      "inputs": ["production", "^production"]
     },
     "@nx/vite:serve": {
       "cache": true,
       "dependsOn": ["^build"],
-      "inputs": ["development", "^development"]
+      "inputs": ["production", "^production"]
     }
   },
   "generators": {
