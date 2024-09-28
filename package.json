@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "lint-tests": "nx run-many -t lint --projects=*-e2e --parallel=true",
-    "e2e-nx-affected": "npx nx affected -t e2e --parallel=true --reporter=blob  --skipNxCache=true",
+    "e2e-nx-affected": "npx nx affected -t e2e --parallel=true --reporter=blob",
     "e2e-nx": "npx nx run-many -t e2e --projects=*-e2e --parallel=true --reporter=blob --skipNxCache=true",
     "e2e": "npx playwright test apps/app1-e2e apps/app2-e2e --reporter=blob",
     "preview-app1": "npx nx run app1:preview &",
