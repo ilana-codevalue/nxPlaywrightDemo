@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "parallel": 2,
-  "defaultBase": "origin/feature/ci-nx-affected~1",
+  "defaultBase": "feature/ci-nx",
   "useDaemonProcess": true,
   "useInferencePlugins": true,
   "namedInputs": {
