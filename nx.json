@@ -14,9 +14,7 @@
       "!{projectRoot}/src/test-setup.[jt]s",
       "!{projectRoot}/test-setup.[jt]s"
     ],
-    "sharedGlobals": [
-      "{workspaceRoot}/.github/workflows/ci-nx-affected.yml"
-    ]
+    "sharedGlobals": ["{workspaceRoot}/.github/workflows/ci-nx.yml"]
   },
   "nxCloudAccessToken": "YjI2NzYxZTYtMjY2Zi00MjYyLWJhNzEtZTQ0YmQwYmExNjZjfHJlYWQtd3JpdGU=",
   "plugins": [
@@ -51,17 +49,7 @@
     "@nx/vite:build": {
       "cache": true,
       "dependsOn": ["^build"],
-      "inputs": ["production", "^production"]
-    },
-    "@nx/vite:preview": {
-      "dependsOn": ["build"],
-      "executor": "@nx/vite:preview-server",
-      "defaultConfiguration": "production",
-      "cache": true,
-      "options": {
-        "buildTarget": ["app1:build","app2:build"],
-        "staticFilePath": "./dist/**/"
-      }
+      "inputs": ["development", "^development"]
     }
   },
   "generators": {
