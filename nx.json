@@ -24,8 +24,7 @@
       "plugin": "@nx/vite/plugin",
       "options": {
         "buildTargetName": "build",
-        "previewTargetName": "preview",
-        "serveTargetName": "serve"
+        "previewTargetName": "preview"
       }
     },
     {
@@ -50,11 +49,6 @@
       "cache": true
     },
     "@nx/vite:build": {
-      "cache": true,
-      "dependsOn": ["^build"],
-      "inputs": ["production", "^production"]
-    },
-    "@nx/vite:serve": {
       "cache": true,
       "dependsOn": ["^build"],
       "inputs": ["production", "^production"]
