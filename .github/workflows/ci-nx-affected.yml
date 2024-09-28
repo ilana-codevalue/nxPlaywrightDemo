@@ -16,22 +16,19 @@ jobs:
       HEAD: 'origin/feature/ci-nx-affected'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
-          fetch-depth: 0
-
-      - uses: actions/setup-node@v4
+          fetch-depth: 2
+      - run: git fetch origin ${{env.HEAD}}
+      
+      - name: Setup node
+        uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'npm'
-      
-      - run: git fetch origin feature/ci-nx-affected
           
-      # - name: Get installed Playwright version
-      #   id: playwright-version
-      #   run: echo 'PLAYWRIGHT_VERSION=$(node -e "console.log(npx playwright --version").split(' ')[1])' >> $GITHUB_ENV  # run: echo "PLAYWRIGHT_VERSION=$(node -e "console.log(require('./package-lock.json').dependencies['@playwright/test'].version)")" >> $GITHUB_ENV
-
-      - name: Cache playwright binaries
+      - name: Cache playwright  
         uses: actions/cache@v4
         id: playwright-cache
         with:
@@ -47,7 +44,8 @@ jobs:
               node_modules
             key: modules-${{ hashFiles('package-lock.json') }}
             
-      - run: npm ci
+      - name: Install dependencies
+        run: npm ci --silent
         if: steps.node-modules-cache.outputs.cache-hit != 'true'
 
       - name: Install Playwright Browsers
