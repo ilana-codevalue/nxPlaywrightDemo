@@ -1,0 +1,98 @@
+name: ci-nx-affected
+
+on:
+  push:
+    branches:
+      - feature/ci-nx-affected
+
+permissions:
+  actions: read
+  contents: read
+
+jobs:
+  test:
+    env:
+      BASE: 'origin/feature/ci-nx-affected~1'
+      HEAD: 'origin/feature/ci-nx-affected'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+      
+      - run: git fetch origin feature/ci-nx-affected
+          
+      # - name: Get installed Playwright version
+      #   id: playwright-version
+      #   run: echo 'PLAYWRIGHT_VERSION=$(node -e "console.log(npx playwright --version").split(' ')[1])' >> $GITHUB_ENV  # run: echo "PLAYWRIGHT_VERSION=$(node -e "console.log(require('./package-lock.json').dependencies['@playwright/test'].version)")" >> $GITHUB_ENV
+
+      - name: Cache playwright binaries
+        uses: actions/cache@v4
+        id: playwright-cache
+        with:
+          path: |
+            ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ hashFiles('package-lock.json') }}
+      
+      - name: Cache node_modules
+        uses: actions/cache@v4
+        id: node-modules-cache
+        with:
+            path: |
+              node_modules
+            key: modules-${{ hashFiles('package-lock.json') }}
+            
+      - run: npm ci
+        if: steps.node-modules-cache.outputs.cache-hit != 'true'
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps chromium
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+
+      - name: Run affected e2e tests
+        run: npm run e2e-nx-affected -- --base=${{env.BASE}} --head=${{env.HEAD}}
+
+      - name: Upload blob report to GitHub Actions Artifacts
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: blob-report
+          path: blob-report
+          retention-days: 1
+
+  merge-reports:
+    # Merge reports after playwright-tests, even if some shards have failed
+    if: ${{ !cancelled() }}
+    needs: [test]
+
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          
+      - name: Install dependencies
+        run: npm ci --silent
+
+      - name: Download blob reports from GitHub Actions Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: all-blob-reports
+          pattern: blob-report*
+          merge-multiple: true
+
+      - name: Merge into HTML Report
+        run: npx playwright merge-reports --reporter html ./all-blob-reports
+
+      - name: Upload HTML report
+        uses: actions/upload-artifact@v4
+        with:
+          name: html-report--attempt-${{ github.run_attempt }}
+          path: playwright-report
+          retention-days: 1
