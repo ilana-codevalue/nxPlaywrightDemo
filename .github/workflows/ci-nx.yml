@@ -3,7 +3,7 @@ name: ci-nx
 on:
   push:
     branches:
-      - master
+      - feature/ci-nx
 
 permissions:
   actions: read
